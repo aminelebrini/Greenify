@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('fullname');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['user', 'admin'])->default('user');
-            $table->timestamps();
+        Schema::create('products', function (Blueprint $table) {
             $table->string('name');
-        });
+            $table->text('description');
+            $table->decimal('price', 10, 2);
+            $table->integer('stock');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
+            $table->id();
+});
     }
 
     /**
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 };

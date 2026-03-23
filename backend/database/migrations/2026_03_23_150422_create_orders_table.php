@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->decimal('total_price', 10, 2);
+            $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->timestamps();
-            $table->string('name');
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('orders');
     }
 };
