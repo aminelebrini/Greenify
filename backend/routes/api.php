@@ -17,8 +17,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/createcategorie', [CategoryController::class, 'create']);
         Route::post('/createproduct', [ProductController::class, 'create']);
         Route::put('/updateproduct', [ProductController::class, 'update']);
-        Route::delete('/deleteproduct', [ProductController::class, 'delete']);
         Route::put('/updatecategorie', [CategoryController::class, 'update']);
+        Route::delete('/deleteproduct', [ProductController::class, 'delete']);
         Route::delete('/deletecategorie', [CategoryController::class, 'delete']);
     });
+
+    Route::middleware('auth.check:user')->group(function () {
+        Route::get('/categories', [CategoryController::class, 'index']);
+        Route::get('/products', [ProductController::class, 'index']);
+        Route::post('/passcommande', [CommandeController::class, 'passCommande']);
+    });
+
 });
