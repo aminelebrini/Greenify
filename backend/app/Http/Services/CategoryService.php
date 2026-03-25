@@ -15,4 +15,12 @@ class CategoryService
     {
         return $this->categoryRepository->createCategory($name);
     }
+    public function update($id, $name)
+    {
+        return $this->categoryRepository->updateCategory($id, $name);
+    }
+    public function delete($id)
+    {
+        return $this->categoryRepository->deleteCategory($id);
+    }
 }

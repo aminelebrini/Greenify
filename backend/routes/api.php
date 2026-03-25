@@ -14,5 +14,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::middleware('auth.check:admin')->group(function () {
         Route::post('/createcategorie', [CategoryController::class, 'create']);
+        Route::put('/updatecategorie', [CategoryController::class, 'update']);
+        Route::delete('/deletecategorie', [CategoryController::class, 'delete']);
     });
 });
