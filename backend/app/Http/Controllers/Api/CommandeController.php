@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CommandeController extends Controller
 {
+    //khasni nchouf cart_items
     private $commandeService;
 
     public function __construct(CommandeService $commandeService)
@@ -16,12 +17,17 @@ class CommandeController extends Controller
     public function passCommande(Request $request)
     {
         $request->validate([
-            'products' => 'required|array',
-            'products.*.id' => 'required|integer|exists:products,id',
-            'products.*.quantity' => 'required|integer|min:1',
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
         ]);
-
-        $commande = $this->commandeService->passCommande($request->products);
+        $userId = auth()->id();
+        $commande = $this->commandeService->passCommande(
+            $userId,
+            $request->product_id,
+            $request->quantity,
+            $request->price
+        );
 
         if ($commande) {
             return response()->json([

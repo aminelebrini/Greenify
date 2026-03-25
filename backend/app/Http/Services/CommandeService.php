@@ -11,8 +11,8 @@ class CommandeService
         $this->commandeRepository = $commandeRepository;
     }
 
-    public function passCommande($products)
+    public function passCommande($userId, $productId , $quantity, $price)
     {
-        return $this->commandeRepository->createCommande($products);
+        return $this->commandeRepository->createCommande($userId, $productId , $quantity, $price);
     }
 }
