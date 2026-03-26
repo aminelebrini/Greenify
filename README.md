@@ -31,8 +31,6 @@ The system distinguishes between two primary actors:
 * **Database:** PostgreSQL (Containerized via Docker)
 * **Authentication:** Laravel Sanctum (Stateful/Token-based)
 * **Testing:** Pest PHP (Feature & Unit Testing)
-* **UI Components:** Tailwind CSS (for frontend integration)
-
 ---
 
 ## 💻 CLI Commands (Quick Reference)
