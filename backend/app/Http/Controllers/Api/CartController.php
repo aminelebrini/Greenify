@@ -34,4 +34,23 @@ class CartController extends Controller
             'message' => 'Failed to add product to cart',
         ], 500);
     }
+    public function deleteFromCart(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+        ]);
+
+        $userId = auth()->id();
+        $deleted = $this->cartService->deleteFromCart($userId, $request->product_id);
+
+        if ($deleted) {
+            return response()->json([
+                'message' => 'Product removed from cart successfully',
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'Failed to remove product from cart',
+        ], 500);
+    }
 }

@@ -18,6 +18,18 @@ class CartRepository
 
         return $cart;
     }
+    public function deleteFromCart($userId, $productId)
+    {
+        $cart = Cart::where('user_id', $userId)->first();
+        if ($cart) {
+            DB::table('cart_items')
+                ->where('cart_id', $cart->id)
+                ->where('product_id', $productId)
+                ->delete();
+            return true;
+        }
+        return false;
+    }
 }
 
 ?>

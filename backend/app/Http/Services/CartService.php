@@ -15,6 +15,10 @@ class CartService
         return $this->cartRepository->addToCart($userId, $productId,
             $quantity);
     }
+    public function deleteFromCart($userId, $productId)
+    {
+        return $this->cartRepository->deleteFromCart($userId, $productId);
+    }
 }
 
 
