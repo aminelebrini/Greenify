@@ -69,5 +69,3 @@ cd greenify
 ```
 👨‍💻 Author
 Amine Lebrini Full-stack Developer & Student at YouCode / Protfolio : https://amine-lebrini.pages.dev/
-
-**Would you like me to help you create a `docker-compose.yml` file if you don't have one ready yet?**
