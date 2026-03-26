@@ -64,7 +64,7 @@ php artisan route:list
 ```
 * Clone Project
 ```Bash
-git clone [https://github.com/yourusername/greenify.git](https://github.com/yourusername/greenify.git)
+git clone https://github.com/aminelebrini/Greenify.git
 cd greenify
 ```
 👨‍💻 Author
