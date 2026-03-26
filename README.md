@@ -21,7 +21,7 @@ The system distinguishes between two primary actors:
 ### 2. Class Diagram Logic
 * **Cart vs. Order Separation:** We implemented a clear distinction between a temporary **Cart** (volatile session data) and a permanent **Order** (immutable historical record).
 * **Association Classes:** Both `cart_items` and `order_items` act as pivot tables with extra attributes like `quantity`.
-* **The "Price Snapshot" Pattern:** To ensure financial accuracy, the `order_items` table stores the `unit_price` at the exact moment of purchase. This prevents future product price changes from altering historical invoice data.
+* **The "Price Snapshot" Pattern:** To ensure financial accuracy, the `order_items` table stores the `price` at the exact moment of purchase. This prevents future product price changes from altering historical invoice data.
 
 ---
 
